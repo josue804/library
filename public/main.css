@@ -1,0 +1,73 @@
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville);
+
+/* General
+***********/
+.jv-background {
+  background: url('bg-min.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body  {
+  background: url('wood.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.navbar {
+  opacity: .9;
+  background-color: #3D1F00;
+  border-color: #251300;
+}
+
+.navbar-default .navbar-brand {
+  font-weight: bold;
+  color: white;
+  align:center;
+}
+
+h1, h2, h3, p, a, label {
+  letter-spacing: 1px;
+  font-family: 'Libre Baskerville', serif;
+  color: white;
+}
+
+label, input {
+  display:block;
+  width: 100%;
+}
+
+input {
+  background-color: lightyellow;
+  color: black;
+}
+
+::-webkit-input-placeholder {
+  color: #333;
+}
+
+.menu {
+  margin-top: 400px;
+}
+
+.menu a {
+  margin-left: 10px;
+  margin-right: 10px;
+  transition: background-color 1s ease;
+}
+
+.menu .btn-primary:hover {
+  background-color: #22527b;
+}
+
+.menu .btn-default:hover {
+  background-color: #b3b3b3;
+}
+
+.btn {
+  border-radius: 0px;
+}
