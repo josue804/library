@@ -54,5 +54,16 @@ describe Patron do
       @patron.delete()
       expect(Patron.all()).to(eq([]))
     end
+
+    it 'deletes a patron and their dependencies' do
+      @patron.save()
+      book = Book.new({:id => nil, :author => 'John Steinbeck', :title => 'The Grapes of Wrath', :publication_year => 1936, :genre => 'Historical Fiction', :pages => 528})
+      book.save()
+      checkout = Checkout.new({:id => nil, :patron_id => @patron.id(), :book_id => book.id(), :due_date => '2015-09-14', :fine => 3})
+      checkout.save()
+      @patron.delete()
+      expect(Checkout.all()).to(eq([]))
+      expect(Patron.all()).to(eq([]))
+    end
   end
 end

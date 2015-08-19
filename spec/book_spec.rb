@@ -60,12 +60,23 @@ describe(Book) do
     end
   end
 
-
   describe('#delete') do
     it('removes the book from the db') do
       @book.save()
       @book.delete()
       expect(Book.all()).to(eq([]))
+    end
+
+    it('removes associated checkouts but not associated patrons') do
+      @book.save()
+      patron   = Patron.new({:name => 'Patron', :total_fine => 0, :id => nil})
+      patron.save()
+      checkout = Checkout.new(:id => nil, :patron_id => patron.id(), :book_id => @book.id(), :due_date => '2015-08-22', :fine => 1)
+      checkout.save()
+      @book.delete()
+      expect(Book.all()).to(eq([]))
+      expect(Checkout.all()).to(eq([]))
+      expect(Patron.all()).to(eq([patron]))
     end
   end
 end

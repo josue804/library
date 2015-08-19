@@ -38,4 +38,12 @@ class Checkout
     DB.exec("DELETE FROM checkouts * WHERE id = #{@id};")
   end
 
+  define_method(:update) do |attributes|
+    @patron_id = attributes[:patron_id]
+    @book_id = attributes[:book_id]
+    @due_date = Time.new(attributes[:due_date])
+    @fine = attributes[:fine]
+    DB.exec("UPDATE checkouts SET patron_id = #{@patron_id}, book_id = #{}")
+  end
+
 end
