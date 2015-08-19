@@ -18,4 +18,11 @@ describe(Checkout) do
       expect(Checkout.all()).to eq []
     end
   end
+
+  describe('#save') do
+    it('should save a checkout onto the checkouts table') do
+      @checkout.save()
+      expect(Checkout.all()).to eq [@checkout]
+    end
+  end
 end
