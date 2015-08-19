@@ -47,4 +47,12 @@ describe Patron do
       expect(@patron.name()).to(eq('Bob'))
     end
   end
+
+  describe '#delete' do
+    it 'deletes a patron' do
+      @patron.save()
+      @patron.delete()
+      expect(Patron.all()).to(eq([]))
+    end
+  end
 end

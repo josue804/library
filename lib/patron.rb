@@ -48,4 +48,8 @@ class Patron
     DB.exec("UPDATE patrons SET name = '#{@name}', total_fine = '#{total_fine}' WHERE id = #{@id};")
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM patrons * WHERE id = #{@id};")
+  end
+
 end
