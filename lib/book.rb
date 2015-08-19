@@ -43,4 +43,8 @@ class Book
      @genre            = attributes.fetch(:genre)
      DB.exec("UPDATE books SET author = '#{@author}', title = '#{@title}', pages = '#{@pages}', publication_year = #{@publication_year}, genre = '#{@genre}' WHERE id = #{@id};")
    end
+
+   define_method(:delete) do
+     DB.exec("DELETE FROM books * WHERE id = #{id};")
+   end
 end

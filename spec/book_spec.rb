@@ -59,4 +59,13 @@ describe(Book) do
       expect(@book.author()).to(eq("Jon Krakauer"))
     end
   end
+
+
+  describe('#delete') do
+    it('removes the book from the db') do
+      @book.save()
+      @book.delete()
+      expect(Book.all()).to(eq([]))
+    end
+  end
 end
