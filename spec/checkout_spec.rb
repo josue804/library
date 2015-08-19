@@ -12,4 +12,10 @@ describe(Checkout) do
       expect(@checkout.id()).to eq nil
     end
   end
+
+  describe('.all') do
+    it('should return an empty array at first') do
+      expect(Checkout.all()).to eq []
+    end
+  end
 end
