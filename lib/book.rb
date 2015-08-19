@@ -34,4 +34,13 @@ class Book
    define_method(:==) do |other|
      id() == other.id() && author() == other.author() && title() == other.title() && pages() == other.pages() && publication_year() == other.publication_year() && genre() == other.genre()
    end
+
+   define_method(:update) do |attributes|
+     @author           = attributes.fetch(:author)
+     @title            = attributes.fetch(:title)
+     @pages            = attributes.fetch(:pages)
+     @publication_year = attributes.fetch(:publication_year)
+     @genre            = attributes.fetch(:genre)
+     DB.exec("UPDATE books SET author = '#{@author}', title = '#{@title}', pages = '#{@pages}', publication_year = #{@publication_year}, genre = '#{@genre}' WHERE id = #{@id};")
+   end
 end

@@ -50,4 +50,13 @@ describe(Book) do
       expect(Book.all()).to(eq([@book]))
     end
   end
+
+  describe('#update') do
+    it('lets you update books in the database') do
+      @book.save()
+      @book.update({:id => nil, :author => 'Jon Krakauer', :title => 'Into Thin Air', :pages => 300, :publication_year => 1997, :genre => 'Adventure Non-Fiction'})
+      expect(@book.title()).to(eq("Into Thin Air"))
+      expect(@book.author()).to(eq("Jon Krakauer"))
+    end
+  end
 end
