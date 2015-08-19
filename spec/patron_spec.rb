@@ -25,4 +25,11 @@ describe Patron do
       expect(Patron.all()).to eq [@patron]
     end
   end
+
+  describe '#==' do
+    it 'should override the equality operator' do
+      patron2 = Patron.new({:name => 'Patron', :total_fine => 9, :id => nil})
+      expect(patron2).to eq @patron
+    end
+  end
 end
