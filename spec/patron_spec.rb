@@ -32,4 +32,11 @@ describe Patron do
       expect(patron2).to eq @patron
     end
   end
+
+  describe '#checkouts' do
+    it 'patron has no checkouts at first' do
+      @patron.save()
+      expect(@patron.checkouts).to eq []
+    end
+  end
 end
