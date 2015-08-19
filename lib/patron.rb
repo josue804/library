@@ -13,10 +13,19 @@ class Patron
     patrons = []
     returned_patrons.each() do |returned_patron|
       name       = returned_patron['name']
-      total_fine = returne_patron['total_fine'].to_i()
+      total_fine = returned_patron['total_fine'].to_i()
       id         = returned_patron['id'].to_i()
       patrons.push(Patron.new({:name => name, :total_fine => total_fine, :id => id}))
     end
     patrons
+  end
+
+  define_method(:save) do
+    return_patrons = DB.exec("INSERT INTO patrons (name, total_fine) VALUES ('#{@name}', #{@total_fine}) RETURNING id;")
+    @id = id
+  end
+
+  define_method(:==) do |other|
+    name() == other.name() && total_fine() == other.total_fine
   end
 end
