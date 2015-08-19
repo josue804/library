@@ -34,6 +34,8 @@ class Checkout
     id() == other.id() && patron_id() == other.patron_id() && book_id() == other.book_id() && due_date == other.due_date()
   end
 
-
+  define_method(:delete) do
+    DB.exec("DELETE FROM checkouts * WHERE id = #{@id};")
+  end
 
 end

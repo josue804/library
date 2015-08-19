@@ -25,4 +25,12 @@ describe(Checkout) do
       expect(Checkout.all()).to eq [@checkout]
     end
   end
+
+  describe('#delete') do
+    it('should remove the checkout from the db') do
+      @checkout.save()
+      @checkout.delete()
+      expect(Checkout.all()).to(eq([]))
+    end
+  end
 end
