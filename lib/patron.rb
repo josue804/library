@@ -7,7 +7,6 @@ class Patron
     @id         = attributes[:id]
   end
 
-
   define_singleton_method(:all) do
     returned_patrons = DB.exec("SELECT * FROM patrons;")
     patrons          = []
