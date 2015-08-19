@@ -42,4 +42,10 @@ class Patron
     checkouts
   end
 
+  define_method(:update) do |attributes|
+    @name       = attributes.fetch(:name)
+    @total_fine = attributes.fetch(:total_fine)
+    DB.exec("UPDATE patrons SET name = '#{@name}', total_fine = '#{total_fine}' WHERE id = #{@id};")
+  end
+
 end

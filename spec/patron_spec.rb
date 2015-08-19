@@ -39,4 +39,12 @@ describe Patron do
       expect(@patron.checkouts).to eq []
     end
   end
+
+  describe '#update' do
+    it 'lets you update the patron in the db' do
+      @patron.save()
+      @patron.update({ :name => 'Bob', :total_fine => 9, :id => nil })
+      expect(@patron.name()).to(eq('Bob'))
+    end
+  end
 end
