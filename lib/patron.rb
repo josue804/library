@@ -41,4 +41,5 @@ class Patron
     end
     checkouts
   end
+
 end

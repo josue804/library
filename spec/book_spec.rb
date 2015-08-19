@@ -37,4 +37,10 @@ describe(Book) do
       expect(@book.genre()).to(eq('Genre'))
     end
   end
+
+  describe('.all') do
+    it('should return all of the saved books (empty at first)') do
+      expect(Book.all()).to(eq([]))
+    end
+  end
 end
