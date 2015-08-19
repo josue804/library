@@ -4,7 +4,7 @@ require('spec_helper')
 describe(Book) do
 
   before do
-    @book = Book.new({:id => nil, :author => 'Author', :pages => 100, :publication_year => 1999, :genre => 'Genre'})
+    @book = Book.new({:id => nil, :author => 'Author', :title => 'Title', :pages => 100, :publication_year => 1999, :genre => 'Genre'})
   end
 
 
@@ -41,6 +41,13 @@ describe(Book) do
   describe('.all') do
     it('should return all of the saved books (empty at first)') do
       expect(Book.all()).to(eq([]))
+    end
+  end
+
+  describe('#save') do
+    it('should save a book onto the Book database') do
+      @book.save()
+      expect(Book.all()).to(eq([@book]))
     end
   end
 end

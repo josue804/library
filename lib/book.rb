@@ -25,4 +25,13 @@ class Book
      end
      books
    end
+
+   define_method(:save) do
+     result = DB.exec("INSERT INTO books (author, title, pages, publication_year, genre) VALUES ('#{author}', '#{title}', #{pages}, #{publication_year}, '#{genre}') RETURNING id;")
+     @id    = result.first.fetch('id').to_i()
+   end
+
+   define_method(:==) do |other|
+     id() == other.id() && author() == other.author() && title() == other.title() && pages() == other.pages() && publication_year() == other.publication_year() && genre() == other.genre()
+   end
 end
