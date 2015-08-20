@@ -30,7 +30,7 @@ body  {
   align:center;
 }
 
-h1, h2, h3, h4, a, label {
+h1, h2, h3, h4, a, label, td {
   letter-spacing: 1px;
   font-family: 'Libre Baskerville', serif;
   color: white;
@@ -96,4 +96,8 @@ label, input {
 
 .required {
   color: red;
+}
+
+.tk-row {
+  background-color: white;
 }

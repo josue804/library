@@ -73,13 +73,39 @@ post('/patrons/:id/checkouts') do
 end
 
 get('/librarians') do
+	@books = Book.all()
 	erb(:librarians)
 end
 
-post('/librarian') do
+post('/librarians') do
+	@books = Book.all()
 	erb(:librarians)
 end
+##current
+get('/librarians/books') do
+	@books = Book.all()
+	erb(:librarian_books)
+end
 
+post('/librarians/books') do
+	title            = params.fetch('title')
+	author           = params.fetch('author')
+	pages            = params.fetch('pages').to_i()
+	publication_year = params.fetch('publication_year').to_i()
+	genre = params.fetch('genre')
+	book = Book.new({:title => title, :author => author, :pages => pages, :publication_year => publication_year, :genre => genre})
+	book.save()
+	@books = Book.all()
+	erb(:librarian_books)
+end
+
+get('/librarians/:id') do
+	@books = Book.all()
+	@to_delete = Book.find(params.fetch('id').to_i())
+	@to_delete.each{|each| each.delete()}
+	erb(:librarian_books)
+end
+##current
 post('/librarians/login') do
 	if params['password'] == 'password'
 		erb(:librarian)

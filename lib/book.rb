@@ -45,8 +45,8 @@ class Book
    end
 
    define_method(:delete) do
-     DB.exec("DELETE FROM books * WHERE id = #{id};")
-     DB.exec("DELETE FROM checkouts * WHERE book_id = #{id};")
+     DB.exec("DELETE FROM books * WHERE id = #{self.id};")
+     DB.exec("DELETE FROM checkouts * WHERE book_id = #{self.id};")
    end
 
    define_singleton_method(:find_by_genre) do |genre|
@@ -59,6 +59,21 @@ class Book
        pages            = returned_book['pages'].to_i()
        publication_year = returned_book['publication_year'].to_i()
        genre            = returned_book['genre']
+       books.push(Book.new({:id => id, :author => author, :title => title, :pages => pages, :publication_year => publication_year, :genre => genre}))
+     end
+     books
+   end
+
+   define_singleton_method(:find) do |id|
+     found_books = DB.exec("SELECT * FROM books WHERE id = #{id}")
+     books = []
+     found_books.each() do |book|
+       id               = book['id'].to_i()
+       author           = book['author']
+       title            = book['title']
+       pages            = book['pages'].to_i()
+       publication_year = book['publication_year'].to_i()
+       genre            = book['genre']
        books.push(Book.new({:id => id, :author => author, :title => title, :pages => pages, :publication_year => publication_year, :genre => genre}))
      end
      books
