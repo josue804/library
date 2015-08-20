@@ -81,7 +81,7 @@ post('/librarians') do
 	@books = Book.all()
 	erb(:librarians)
 end
-##current
+
 get('/librarians/books') do
 	@books = Book.all()
 	erb(:librarian_books)
@@ -105,7 +105,7 @@ get('/librarians/:id') do
 	@to_delete.each{|each| each.delete()}
 	erb(:librarian_books)
 end
-##current
+
 post('/librarians/login') do
 	if params['password'] == 'password'
 		erb(:librarian)
@@ -114,8 +114,30 @@ post('/librarians/login') do
 	end
 end
 
-
 get('/librarians/login/error') do
 	@message = 'Your form has some errors.'
 	erb(:librarians)
+end
+
+get('/librarians/:id/edit') do
+	@id                = params['id'].to_i()
+	@book              = Book.find(@id).first
+	@author 				   = @book.author
+	@title  					 = @book.title
+	@pages  					 = @book.pages
+	@publication_year  = @book.publication_year
+	@genre  					 = @book.genre
+	erb(:book_edit)
+end
+
+patch('/librarians/:id/edit') do
+	id               = params['id'].to_i()
+	author 				   = params['author']
+	title  					 = params['title']
+	pages  					 = params['pages'].to_i()
+	publication_year = params['publication_year'].to_i()
+	genre  					 = params['genre']
+	@book            = Book.find(id).first
+	@book.update({ :id => id, :author => author, :title => title, :pages => pages, :publication_year => publication_year, :genre => genre })
+	erb(:librarian)
 end
