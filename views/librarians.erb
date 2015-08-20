@@ -1,0 +1,17 @@
+<div class="container-fluid">
+  <h2>Librarian Login</h2>
+
+  <% if @message %>
+    <p class="invalid-message"><%= @message %></p>
+  <% end %>
+
+  <form action="/librarians/login" method="post">
+
+    <div class="form-group jv-form">
+      <label for="password">Librarian Password</label>
+      <input type="password" name="password" class="form-control">
+    </div>
+
+    <button class="btn btn-default" type="submit">Login</button>
+  </form>
+</div>
