@@ -30,7 +30,7 @@ body  {
   align:center;
 }
 
-h1, h2, h3, h4, a, label, td {
+h1, h2, h3, h4, a, label, td, li {
   letter-spacing: 1px;
   font-family: 'Libre Baskerville', serif;
   color: white;

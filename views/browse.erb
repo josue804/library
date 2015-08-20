@@ -1,1 +1,7 @@
-<h1><%= genre %></h1>
+<% if @books%>
+<ul>
+  <% @books.each() do |book| %>
+    <li><%= book.title() %></li>
+  <% end %>
+</ul>
+<% end %>

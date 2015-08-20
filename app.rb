@@ -59,19 +59,19 @@ post('/patrons/login') do
 		redirect('/patrons/login/error')
 	end
 end
+###current
+get('/patrons/:id/browse') do
+	@books = Book.all()
+	@patron = Patron.find(params.fetch('id').to_i())
 
-get('/patrons/:id/checkouts/new') do
-	erb(:checkouts_form)
+	erb(:browse)
 end
 
-get('/patrons/:id/checkouts') do
-	erb(:checkouts)
+post('/patrons/:id/browse') do
+	@books = Book.all()
+	erb(:browse)
 end
-
-post('/patrons/:id/checkouts') do
-	erb(:checkouts)
-end
-
+###current
 get('/librarians') do
 	@books = Book.all()
 	erb(:librarians)
