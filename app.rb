@@ -30,12 +30,9 @@ post('/patrons') do
 	erb(:patrons)
 end
 
-get('/patrons/:Invalid_login_info') do
-	puts 'got here'
+get('/patrons/login/error') do
 	@patrons = Patron.all()
-	@message = params.fetch('Invalid_login_info')
-	@message.gsub!('_', ' ')
-	@message.gsub!(':', '')
+	@message = 'Your form has some errors'
 	erb(:patrons)
 end
 
@@ -45,8 +42,7 @@ post('/patrons/login') do
 		@patron = Patron.find(@id)
 		erb(:patron)
 	else
-		message = 'Invalid login info'
-		redirect('/patrons/:Invalid_login_info')
+		redirect('/patrons/login/error')
 	end
 
 end
