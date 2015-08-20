@@ -41,13 +41,14 @@ end
 
 post('/patrons/login') do
 	if params['password'] == 'password'
-		@id = params.fetch('id')
-		@
+		@id = params.fetch('id').to_i()
+		@patron = Patron.find(@id)
 		erb(:patron)
 	else
 		message = 'Invalid login info'
 		redirect('/patrons/:Invalid_login_info')
 	end
+
 end
 
 get('/patrons/:id/checkouts/new') do

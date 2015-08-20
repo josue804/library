@@ -53,4 +53,16 @@ class Patron
     DB.exec("DELETE FROM checkouts * WHERE patron_id = #{@id}")
   end
 
+  define_singleton_method(:find) do |id|
+    results = DB.exec("SELECT * FROM patrons WHERE id = #{id};")
+    patron = []
+    results.each() do |result|
+      name = result.fetch('name')
+      total_fine = result.fetch('total_fine').to_i()
+      id = result.fetch('id').to_i()
+      patron.push(Patron.new({:name => name, :total_fine => total_fine, :id => id}))
+    end
+    patron
+  end
+
 end
