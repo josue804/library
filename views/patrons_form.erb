@@ -4,9 +4,20 @@
   <form action="/patrons" method="post">
     <div class="form-group jv-form">
       <label for="name">Name</label>
-      <input type="text" name="name" placeholder="e.g. Maximus Aurelius Julius Augustus Caesar">
+      <input type="text" class="form-control" name="name" placeholder="e.g. Maximus Aurelius Julius Augustus Caesar">
+    </div>
+
+    <div class="form-group jv-form">
+      <label for="payment">Praetorium Entry Donation<span class="required">*</span></label>
+      <div class="input-group">
+        <div class="input-group-addon">£</div>
+        <input type="number" class="form-control" placeholder="Amount" min="10000">
+        <div class="input-group-addon">.00</div>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary btn-md">Join</button>
   </form>
+
+  <p><span class="required">*</span>Minimum of £10,000</p>
 </div>

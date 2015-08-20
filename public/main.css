@@ -30,10 +30,17 @@ body  {
   align:center;
 }
 
-h1, h2, h3, p, a, label {
+h1, h2, h3, h4, a, label {
   letter-spacing: 1px;
   font-family: 'Libre Baskerville', serif;
   color: white;
+}
+
+p {
+  letter-spacing: 1px;
+  font-family: 'Libre Baskerville', serif;
+  color: white;
+  font-size: 12px;
 }
 
 label, input {
@@ -41,13 +48,19 @@ label, input {
   width: 100%;
 }
 
-input {
+.invalid-message {
+  background-color:rgba(255,0,0,0.3);
+  color: white;
+  padding: 5px;
+}
+
+.form-control{
   background-color: lightyellow;
   color: black;
 }
 
 ::-webkit-input-placeholder {
-  color: #333;
+  color: #888888;
 }
 
 .menu {
@@ -70,4 +83,8 @@ input {
 
 .btn {
   border-radius: 0px;
+}
+
+.required {
+  color: red;
 }
