@@ -62,9 +62,18 @@ end
 ###current
 get('/patrons/:id/browse') do
 	@books = Book.all()
-	@patron = Patron.find(params.fetch('id').to_i())
-
+	@patron = Patron.find(params.fetch('id').to_i()).first
+	@id = params.fetch('id').to_i()
 	erb(:browse)
+end
+
+get('/patrons/:book_id/:patron_id/checkouts/new') do
+	patron_id = params.fetch('patron_id').to_i()
+	book_id   = params.fetch('book_id').to_i()
+	due_date  = Time.new.day + 7
+	@checkout = Checkout.new({ :id => nil, :patron_id => patron_id, :book_id => book_id, :due_date => due_date, :fine => 0})
+	@patron   = Patron.find(patron_id).first
+	redirect('/patrons/:id/browse')
 end
 
 post('/patrons/:id/browse') do
